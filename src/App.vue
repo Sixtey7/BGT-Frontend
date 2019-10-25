@@ -1,9 +1,15 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <GameView></GameView>
-  </div>
+  <v-app dark sytle = "margin-top: 0px">
+    <v-card height = "100%">
+      <v-content>
+        <v-container>
+          <img alt="Vue logo" src="./assets/logo.png">
+          <HelloWorld msg="Welcome to Your Vue.js App"/>
+          <GameView></GameView>
+        </v-container>
+      </v-content>
+    </v-card>
+  </v-app>
 </template>
 
 <script>

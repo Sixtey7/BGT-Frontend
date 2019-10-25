@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueLogger from 'vuejs-logger';
+//import Vuetify from 'vuetify'
+import vuetify from '@/plugins/vuetify' // path to vuetify export
+import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
 
 Vue.config.productionTip = false
 
@@ -16,8 +19,10 @@ const options = {
 };
 
 Vue.use(VueLogger, options);
+//Vue.use(Vuetify);
 
 Vue
 new Vue({
+  vuetify,
   render: h => h(App),
 }).$mount('#app')

@@ -5,13 +5,10 @@
                 <v-icon dark right>add</v-icon>
             </v-btn>
         </div>
-        <div v-for = "game in gameArray" v-bind:key = "game.id">
-            <ul>
-                <li> {{ game.id }} </li>
-                <li> {{ game.name }} </li>
-                <li> {{ game.scoring }}</li>
-            </ul>
-        </div>
+        <GameTable
+            :games = "gameArray"
+            :logger = "logger"
+        />
         <GameModal
             :show = "isModalVisible"
             :gameToEdit = "gameToShow"
@@ -23,12 +20,14 @@
 
 <script>
 import GameModel from '../../model/GameModel.js';
+import GameTable from './GameTable.vue';
 import GameModal from './GameModal.vue';
 import Vue from 'vue'
 
 export default {
     name: 'GameView',
     components: {
+        GameTable,
         GameModal
     },
     data() {

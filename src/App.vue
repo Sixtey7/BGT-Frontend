@@ -3,8 +3,6 @@
     <v-card height = "100%">
       <v-content>
         <v-container>
-          <img alt="Vue logo" src="./assets/logo.png">
-          <HelloWorld msg="Welcome to Your Vue.js App"/>
           <GameView></GameView>
         </v-container>
       </v-content>
@@ -13,13 +11,11 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import GameView from './components/game/GameView.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,
     GameView
   }
 }

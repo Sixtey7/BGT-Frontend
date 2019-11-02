@@ -3,6 +3,9 @@
 ## About
 Front end for a Boardgame Tracking App I'm working on
 
+### Related Projects
+The backend is written in Python and hosted in the repo: https://github.com/Sixtey7/BGT-Backend
+
 ## Project setup
 ```
 yarn install

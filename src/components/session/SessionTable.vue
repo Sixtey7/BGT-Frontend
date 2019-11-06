@@ -15,24 +15,29 @@
                     <th scope="col"></th>
                 </tr>
             </template>
-            <template>
+            <template v-slot:item="props">
                 <tr>
-                    <StringCell :stringToShow="props.item.date" />
-                    <StringCell :stringToShow="props.item.game" />
-                    <StringCell :stringToShow="props.item.players.length" />
-                    <StringCell :stringToShow="props.item.game" />
+                    <DateCell :dateToShow="props.item.date" />
+                    <StringCell :stringToShow="props.item.game_id" />
+                    <NumberCell :numberToShow="props.item.players.length" />
+                    <DateCell :dateToShow="props.item.date" />
                 </tr>
             </template>
         </v-data-table>
     </div>
 </template>
 <script>
+import DateCell from '../cells/DateCell.vue';
+import NumberCell from '../cells/NumberCell.vue';
 import StringCell from '../cells/StringCell.vue';
+
 import Vue from 'vue';
 
 export default {
        name: 'SessionTable',
        components: {
+           DateCell,
+           NumberCell,
            StringCell
        },
        props: {

@@ -50,7 +50,7 @@ export default {
                             <v-flex xs12 sm6>
                                 <v-text-field
                                     label = "Game"
-                                    v-model="session.game"
+                                    v-model="session.game_id"
                                     required>
                                 </v-text-field>
                                 <v-text-field

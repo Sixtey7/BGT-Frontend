@@ -32,7 +32,7 @@ export default {
     data() {
         return {
             logger: Vue.$log,
-            gameModel: new SessionModel(Vue.$log),
+            sessionModel: new SessionModel(Vue.$log),
             isModalVisible: false,
             sessionToShow: null
         }
@@ -55,7 +55,15 @@ export default {
     },
     computed: {
         sessionArray() {
-            return this.SessionModel.sessionArray;
+            // TODO: this is a hack until I have better massaging of the data elsewhere
+            let sessionArrayToReturn = this.sessionModel.sessionArray;
+            if (sessionArrayToReturn) {
+                sessionArrayToReturn.forEach(sessionObj => {
+                    sessionObj.date = new Date(sessionObj.date);
+                });
+            }
+            //return this.sessionModel.sessionArray;
+            return sessionArrayToReturn;
         }
     }
 }

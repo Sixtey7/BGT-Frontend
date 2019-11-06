@@ -5,18 +5,23 @@
         <v-container>
           <GameView></GameView>
         </v-container>
+        <v-container>
+          <SessionView></SessionView>
+        </v-container>
       </v-content>
     </v-card>
   </v-app>
 </template>
 
 <script>
-import GameView from './components/game/GameView.vue'
+import GameView from './components/game/GameView.vue';
+import SessionView from './components/session/SessionView.vue';
 
 export default {
   name: 'app',
   components: {
-    GameView
+    GameView,
+    SessionView
   }
 }
 </script>

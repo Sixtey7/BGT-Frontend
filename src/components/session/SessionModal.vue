@@ -22,7 +22,7 @@ export default {
             this.session.date = '';
         }
     },
-    wathc: {
+    watch: {
         show: function(show) {
             if (show) {
                 //we'll want to set the vlaues of the model if they were provided

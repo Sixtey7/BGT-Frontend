@@ -18,7 +18,7 @@
                 <tr>
                     <StringCell :stringToShow="props.item.name" />
                     <StringCell :stringToShow="props.item.scoring" />
-                    <StringCell :stringToShow="props.item.name" />
+                    <ButtonCell :id="props.item.id" :buttonName="buttonName" :icon="iconToShow" @click="buttonClicked"/>
                 </tr>
             </template>
         </v-data-table>
@@ -26,17 +26,30 @@
 </template>
 
 <script>
+import ButtonCell from '../cells/ButtonCell.vue';
 import StringCell from '../cells/StringCell.vue';
 import Vue from 'vue';
 
 export default {
     name: 'GameTable',
     components: {
+        ButtonCell,
         StringCell
     },
     props: {
         games: Array,
         logger: Vue.log
+    },
+    data() {
+        return {
+            buttonName: 'edit',
+            iconToShow: 'edit'
+        }
+    },
+    methods: {
+        buttonClicked(buttonName, itemIdClicked) {
+            this.logger.info(buttonName + ' was clicked for item: ' + itemIdClicked);
+        }
     }
 }
 </script>

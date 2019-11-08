@@ -18,7 +18,7 @@
                 <tr>
                     <StringCell :stringToShow="props.item.name" />
                     <StringCell :stringToShow="props.item.scoring" />
-                    <ButtonCell :id="props.item.id" :buttonName="buttonName" :icon="iconToShow" @click="buttonClicked"/>
+                    <ButtonCell :id="props.item.id" :buttons="buttons" @click="buttonClicked"/>
                 </tr>
             </template>
         </v-data-table>
@@ -42,8 +42,16 @@ export default {
     },
     data() {
         return {
-            buttonName: 'edit',
-            iconToShow: 'edit'
+            buttons: [
+                {
+                    name: 'edit',
+                    iconToShow: 'edit',
+                },
+                {
+                    name: 'delete',
+                    iconToShow: 'delete'
+                }
+            ]
         }
     },
     methods: {

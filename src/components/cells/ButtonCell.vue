@@ -1,11 +1,11 @@
 <template>
     <td>
-        <v-icon
+        <v-icon v-for="button in buttons" v-bind:key="button.name"
             small
             class="mr-2"
-            @click="buttonClicked(buttonName)"
+            @click="buttonClicked(button.name)"
         >
-            {{ icon }}
+            {{ button.iconToShow }}
         </v-icon>
     </td>
 </template>
@@ -13,9 +13,8 @@
 export default {
     name: "ButtonCell",
     props: {
+        buttons: Array,
         id: String,
-        buttonName: String,
-        icon: String
     },
     methods: {
         buttonClicked(itemClicked) {

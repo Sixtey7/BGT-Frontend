@@ -1,8 +1,7 @@
 <template>
     <td>
         <v-icon v-for="button in buttons" v-bind:key="button.name"
-            small
-            class="mr-2"
+            class="ma-2"
             @click="buttonClicked(button.name)"
         >
             {{ button.iconToShow }}
@@ -18,8 +17,6 @@ export default {
     },
     methods: {
         buttonClicked(itemClicked) {
-            // eslint-disable-next-line
-            console.log('Got the value: ' + itemClicked)
             this.$emit('click', itemClicked, this.$props.id );
         }
     }

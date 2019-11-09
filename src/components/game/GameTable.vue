@@ -18,7 +18,7 @@
                 <tr>
                     <StringCell :stringToShow="props.item.name" />
                     <StringCell :stringToShow="props.item.scoring" />
-                    <ButtonCell :id="props.item.id" :buttons="buttons" @click="buttonClicked"/>
+                    <ButtonCell class="button-cell" :id="props.item.id" :buttons="buttons" @click="buttonClicked"/>
                 </tr>
             </template>
         </v-data-table>
@@ -57,6 +57,23 @@ export default {
     methods: {
         buttonClicked(buttonName, itemIdClicked) {
             this.logger.info(buttonName + ' was clicked for item: ' + itemIdClicked);
+            if (buttonName === 'edit') {
+                this.handleEdit(itemIdClicked);
+            }
+            else if (buttonName === 'delete') {
+                this.handleDelete(itemIdClicked);
+            }
+            else {
+                this.logger.error('Got an invalid action from button callback: ' + buttonName);
+            }
+        },
+        handleEdit(itemIdClicked) {
+            this.logger.info('doing an edit for item: ' + itemIdClicked);
+            //TODO
+        },
+        handleDelete(itemIdClicked) {
+            this.logger.info('doing a delete for item: ' + itemIdClicked);
+            //TODO
         }
     }
 }
@@ -74,5 +91,8 @@ html, body {
 
 #game-table-header-row th {
     text-align: center;
+}
+.button-cell {
+    float: right;
 }
 </style>

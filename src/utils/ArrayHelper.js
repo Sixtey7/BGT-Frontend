@@ -20,6 +20,19 @@ class ArrayHelper {
 
         return array;
     }
+
+    async removeItemFromArray(idToRemove, array) {
+        let index = array.findIndex(item => {
+            return item.id === idToRemove;
+        });
+
+        if (index >= 0) {
+            this._logger.debug('Found a match for id: ' + index);
+            array.splice(index, 1);
+        }
+
+        return array;
+    }
 }
 
 export default ArrayHelper;

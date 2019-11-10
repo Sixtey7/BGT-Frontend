@@ -8,6 +8,8 @@
         <GameTable
             :games = "gameArray"
             :logger = "logger"
+            @edit = "editGame"
+            @delete = "deleteGame"
         />
         <GameModal
             :show = "isModalVisible"
@@ -51,7 +53,20 @@ export default {
         },
         async saveGame(gameToSave) {
             this.logger.debug("Saving the game: " + JSON.stringify(gameToSave));
-            //TODO
+            this.isModalVisible = false;
+            this.gameToShow = null;
+
+            this.gameModel.saveGame(gameToSave);
+        },
+        editGame(idToEdit) {
+            this.gameToShow = this.gameArray.find(game => game.id === idToEdit);
+
+            this.isModalVisible = true;
+        },
+        deleteGame(idToDelete) {
+            this.logger.debug('App is deleting a game: ' + idToDelete);
+
+            this.gameModel.deleteGame(idToDelete);
         }
     },
     computed: {

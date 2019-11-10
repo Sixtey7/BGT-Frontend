@@ -69,11 +69,11 @@ export default {
         },
         handleEdit(itemIdClicked) {
             this.logger.info('doing an edit for item: ' + itemIdClicked);
-            //TODO
+            this.$emit('edit', itemIdClicked);
         },
         handleDelete(itemIdClicked) {
             this.logger.info('doing a delete for item: ' + itemIdClicked);
-            //TODO
+            this.$emit('delete', itemIdClicked);
         }
     }
 }

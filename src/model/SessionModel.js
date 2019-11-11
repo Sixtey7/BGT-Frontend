@@ -28,12 +28,12 @@ class SessionModel {
             });
         
     }
-    async savesession(sessionToSave) {
+    async saveSession(sessionToSave) {
         //determine if this is an existing session or a new one
         if (sessionToSave.id) {
             this._logger.debug('saving an edited session: ' + JSON.stringify(sessionToSave));
 
-            let returnVal = await this._putsession(sessionToSave);
+            let returnVal = await this._putSession(sessionToSave);
 
             if (returnVal) {
                 this.sessionArray = await this._arrayHelper.mergeItemIntoArray(sessionToSave, this.sessionArray)
@@ -45,7 +45,7 @@ class SessionModel {
         else {
             this._logger.debug('adding a new session: ' + JSON.stringify(sessionToSave));
 
-            let returnVal = await this._postsession(sessionToSave);
+            let returnVal = await this._postSession(sessionToSave);
 
             if (returnVal) {
                 sessionToSave.id = returnVal.id;
@@ -57,17 +57,17 @@ class SessionModel {
         }
     }
 
-    async deletesession(idToDelete) {
+    async deleteSession(idToDelete) {
         this._logger.debug('Deleting a session with id: ' + idToDelete);
 
-        let returnVal = await this._deletesession(idToDelete);
+        let returnVal = await this._deleteSession(idToDelete);
 
         if (returnVal) {
             this.sessionArray = await this._arrayHelper.removeItemFromArray(idToDelete, this.sessionArray);
         }
     }
 
-    async _putsession(sessionToPut) {
+    async _putSession(sessionToPut) {
         let sessionJSON = JSON.stringify(sessionToPut);
 
         let returnVal = '';
@@ -92,7 +92,7 @@ class SessionModel {
         return returnVal;
     }
 
-    async _postsession(sessionToPost) {
+    async _postSession(sessionToPost) {
         // need to delete the empty id to prevent the backend from trying to handle it
         delete sessionToPost.id;
         let sessionJSON = JSON.stringify(sessionToPost);
@@ -124,7 +124,7 @@ class SessionModel {
         return returnVal;
     }
 
-    async _deletesession(idToDelete) {
+    async _deleteSession(idToDelete) {
         this._logger.debug('Deleting session with id: ' + idToDelete);
 
         let returnVal = false;

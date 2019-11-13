@@ -8,6 +8,9 @@
         <SessionTable
             :sessions = "sessionArray"
             :logger = "logger"
+            @edit = "editSession"
+            @delete = "deleteSession"
+            @add_session = "addToSession"
         />
         <SessionModal
             :show = "isModalVisible"
@@ -50,7 +53,23 @@ export default {
         },
         async saveSession(sessionToSave) {
             this.logger.debug('Saving the session: ' + JSON.stringify(sessionToSave));
-            //TODO
+            
+            this.isModalVisible = false;
+            this.sessionToShow = null;
+
+            this.sessionModel.saveSession(sessionToSave);
+        },
+        editSession(idtoEdit) {
+            this.sessionToShow = this.sessionArray.find(session => session.id === idtoEdit);
+
+            this.isModalVisible = true;
+        },
+        deleteSession(idToDelete) {
+            this.logger.debug('App is deleting a session: ' + idToDelete);
+            this.sessionModel.deleteSession(idToDelete);
+        },
+        addToSession(idToAddTo) {
+            this.logger.debug('App is adding a player to a session ' + idToAddTo);
         }
     },
     computed: {

@@ -20,6 +20,8 @@ export default {
         clearValues() {
             this.session.game = '';
             this.session.date = '';
+            this.session.player1 = '';
+            this.session.player2 = '';
         }
     },
     watch: {

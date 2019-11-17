@@ -6,6 +6,9 @@
           <GameView></GameView>
         </v-container>
         <v-container>
+          <PlayerView></PlayerView>
+        </v-container>
+        <v-container>
           <SessionView></SessionView>
         </v-container>
       </v-content>
@@ -15,12 +18,15 @@
 
 <script>
 import GameView from './components/game/GameView.vue';
+import PlayerView from './components/players/PlayerView.vue';
 import SessionView from './components/session/SessionView.vue';
+
 
 export default {
   name: 'app',
   components: {
     GameView,
+    PlayerView,
     SessionView
   }
 }

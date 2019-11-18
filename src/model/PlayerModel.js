@@ -1,7 +1,7 @@
 import axios from 'axios';
 import ArrayHelper from '../utils/ArrayHelper';
 
-const PLAYER_URL = 'http://localhost:5000/players';
+const PLAYER_URL = 'http://localhost:5000/players/';
 
 class PlayerModel {
     playerArray;

@@ -23,7 +23,6 @@
 import PlayerModel from '../../model/PlayerModel.js';
 import PlayerTable from './PlayerTable.vue';
 import PlayerModal from './PlayerModal.vue';
-import Vue from 'vue';
 
 export default {
     name: 'PlayerView',
@@ -33,13 +32,13 @@ export default {
     },
     data() {
         return {
-            logger: Vue.$log,
-            playerModel: new PlayerModel(Vue.$log),
             isModalVisible: false,
             playerToShow: null
         }
     },
     props: {
+        logger: Object,
+        playerModel: PlayerModel
     },
     methods: {
         showModal() {

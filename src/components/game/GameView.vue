@@ -24,7 +24,6 @@
 import GameModel from '../../model/GameModel.js';
 import GameTable from './GameTable.vue';
 import GameModal from './GameModal.vue';
-import Vue from 'vue'
 
 export default {
     name: 'GameView',
@@ -34,13 +33,13 @@ export default {
     },
     data() {
         return {
-            logger: Vue.$log,
-            gameModel: new GameModel(Vue.$log),
             isModalVisible: false,
             gameToShow: null
         }
     },
     props: {
+        logger: Object,
+        gameModel: GameModel
     },
     methods: {
         showModal() {

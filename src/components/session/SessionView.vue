@@ -24,7 +24,6 @@
 import SessionModel from '../../model/SessionModel.js';
 import SessionTable from './SessionTable.vue';
 import SessionModal from './SessionModal.vue';
-import Vue from 'vue';
 
 export default {
     name: 'SessionView',
@@ -34,13 +33,13 @@ export default {
     },
     data() {
         return {
-            logger: Vue.$log,
-            sessionModel: new SessionModel(Vue.$log),
             isModalVisible: false,
             sessionToShow: null
         }
     },
     props: {
+        logger: Object,
+        sessionModel: SessionModel
     },
     methods: {
         showModal() {

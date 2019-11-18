@@ -3,13 +3,22 @@
     <v-card height = "100%">
       <v-content>
         <v-container>
-          <GameView></GameView>
+          <GameView
+            :gameModel = "gameModel"
+            :logger = "logger">
+          </GameView>
         </v-container>
         <v-container>
-          <PlayerView></PlayerView>
+          <PlayerView
+            :playerModel = "playerModel"
+            :logger = "logger">
+          </PlayerView>
         </v-container>
         <v-container>
-          <SessionView></SessionView>
+          <SessionView
+            :sessionModel = "sessionModel"
+            :logger = "logger">
+          </SessionView>
         </v-container>
       </v-content>
     </v-card>
@@ -20,7 +29,10 @@
 import GameView from './components/game/GameView.vue';
 import PlayerView from './components/players/PlayerView.vue';
 import SessionView from './components/session/SessionView.vue';
-
+import GameModel from './model/GameModel';
+import PlayerModel from './model/PlayerModel';
+import SessionModel from './model/SessionModel';
+import Vue from 'vue';
 
 export default {
   name: 'app',
@@ -28,6 +40,14 @@ export default {
     GameView,
     PlayerView,
     SessionView
+  },
+  data() {
+    return {
+      logger: Vue.$log,
+      gameModel: new GameModel(Vue.$log),
+      playerModel: new PlayerModel(Vue.$log),
+      sessionModel: new SessionModel(Vue.$log)
+    }
   }
 }
 </script>

@@ -28,6 +28,47 @@ class PlayerModel {
             })
     }
 
+    async savePlayer(playerToSave) {
+        //determine if this is an existing player or a new one
+        if (playerToSave.id) {
+            this._logger.debug('saving an edited player: ' + JSON.stringify(playerToSave));
+
+            let returnVal = await this._putPlayer(playerToSave);
+
+            if (returnVal) {
+                this.playerArray = await this._arrayHelper.mergeItemIntoArray(playerToSave, this.playerArray);
+            }
+            else {
+                this._logger.error('failed to put the player');
+            }
+        }
+        else {
+            this._logger.debug('adding a new player: ' + JSON.stringify(playerToSave));
+            
+            let returnVal = await this._postPlayer(playerToSave);
+
+            if (returnVal) {
+                playerToSave.id = returnVal.id;
+                this.playerArray.push(playerToSave);
+            }
+            else {
+                this._logger.error('failed to post player for: ' + JSON.stringify(playerToSave));
+            }
+        }
+    }
+
+    async deletePlayer(idToDelete) {
+        this._logger.debug('Deleting a player with id: ' + idToDelete);
+
+        let returnVal = await this._deletePlayer(idToDelete);
+
+        if (returnVal) {
+            this.playerArray = await this._arrayHelper.removeItemFromArray(idToDelete, this.playerArray);
+        }
+        else {
+            this._logger.error('failed to delete player with id: ' + idToDelete);
+        }
+    }
 
     async _putPlayer(playerToPut) {
         let playerJSON = JSON.stringify(playerToPut);

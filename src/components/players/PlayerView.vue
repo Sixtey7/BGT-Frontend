@@ -38,7 +38,8 @@ export default {
     },
     props: {
         logger: Object,
-        playerModel: PlayerModel
+        playerModel: PlayerModel,
+        playerArray: Array
     },
     methods: {
         showModal() {
@@ -65,11 +66,6 @@ export default {
             this.logger.debug('App is deleting a player: ' + idToDelete);
 
             this.playerModel.deletePlayer(idToDelete);
-        }
-    },
-    computed: {
-        playerArray() {
-            return this.playerModel.playerArray;
         }
     }
 }

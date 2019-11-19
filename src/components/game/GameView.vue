@@ -39,7 +39,8 @@ export default {
     },
     props: {
         logger: Object,
-        gameModel: GameModel
+        gameModel: GameModel,
+        gameArray: Array
     },
     methods: {
         showModal() {
@@ -66,11 +67,6 @@ export default {
             this.logger.debug('App is deleting a game: ' + idToDelete);
 
             this.gameModel.deleteGame(idToDelete);
-        }
-    },
-    computed: {
-        gameArray() {
-            return this.gameModel.gameArray
         }
     }
 }

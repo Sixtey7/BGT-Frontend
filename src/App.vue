@@ -5,12 +5,14 @@
         <v-container>
           <GameView
             :gameModel = "gameModel"
+            :gameArray = "gameModel.gameArray"
             :logger = "logger">
           </GameView>
         </v-container>
         <v-container>
           <PlayerView
             :playerModel = "playerModel"
+            :playerArray = "playerModel.playerArray"
             :logger = "logger">
           </PlayerView>
         </v-container>

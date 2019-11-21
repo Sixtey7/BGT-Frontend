@@ -20,6 +20,7 @@ class SessionModel {
                 this._logger.debug('Got the response: ' + JSON.stringify(response.data));
 
                 this.sessionArray = response.data
+                this._massageSessions();
 
                 this._logger.debug("Session array is " + this.sessionArray.length + " elements long")
             })
@@ -155,6 +156,12 @@ class SessionModel {
         });
 
         return returnVal;
+    }
+
+    _massageSessions() {
+        this.sessionArray.forEach(sessionObj => {
+            sessionObj.date = new Date(sessionObj.date);
+        });
     }
 }
 

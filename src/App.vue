@@ -19,6 +19,7 @@
         <v-container>
           <SessionView
             :sessionModel = "sessionModel"
+            :sessionArray = "sessionModel.sessionArray"
             :logger = "logger">
           </SessionView>
         </v-container>

@@ -39,7 +39,8 @@ export default {
     },
     props: {
         logger: Object,
-        sessionModel: SessionModel
+        sessionModel: SessionModel,
+        sessionArray: Array
     },
     methods: {
         showModal() {
@@ -69,18 +70,6 @@ export default {
         },
         addToSession(idToAddTo) {
             this.logger.debug('App is adding a player to a session ' + idToAddTo);
-        }
-    },
-    computed: {
-        sessionArray() {
-            // TODO: this is a hack until I have better massaging of the data elsewhere
-            let sessionArrayToReturn = this.sessionModel.sessionArray;
-            if (sessionArrayToReturn) {
-                sessionArrayToReturn.forEach(sessionObj => {
-                    sessionObj.date = new Date(sessionObj.date);
-                });
-            }
-            return sessionArrayToReturn;
         }
     }
 }

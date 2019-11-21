@@ -80,7 +80,6 @@ export default {
                     sessionObj.date = new Date(sessionObj.date);
                 });
             }
-            //return this.sessionModel.sessionArray;
             return sessionArrayToReturn;
         }
     }

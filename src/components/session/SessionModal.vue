@@ -1,7 +1,9 @@
 <script>
 export default {
     name: 'SessionModal',
-    props: ['show', 'sessionToEdit'],
+    props: ['show', 
+        'sessionToEdit',
+        'gameArray'],
     data: function() {
         return {
             session: {}
@@ -50,11 +52,14 @@ export default {
                     <v-container grid-list-md>
                         <v-layout wrap>
                             <v-flex xs12 sm6>
-                                <v-text-field
+                                <v-select
+                                    :items = "this.gameArray"
                                     label = "Game"
-                                    v-model="session.game_id"
+                                    item-text = "name"
+                                    item-value = "id"
+                                    v-model = "session.game_id"
                                     required>
-                                </v-text-field>
+                                </v-select>
                                 <v-text-field
                                     label = "Date"
                                     v-model="session.date"

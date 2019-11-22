@@ -19,6 +19,8 @@
         <v-container>
           <SessionView
             :sessionModel = "sessionModel"
+            :gameArray = "gameModel.gameArray"
+            :playerArray = "playerModel.playerArray"
             :sessionArray = "sessionModel.sessionArray"
             :logger = "logger">
           </SessionView>

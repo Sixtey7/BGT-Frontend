@@ -15,6 +15,7 @@
         <SessionModal
             :show = "isModalVisible"
             :sessionToEdit = "sessionToShow"
+            :gameArray = "gameArray"
             @close = "closeModal"
             @save = "saveSession"
         />
@@ -40,6 +41,8 @@ export default {
     props: {
         logger: Object,
         sessionModel: SessionModel,
+        gameArray: Array,
+        playerArray: Array,
         sessionArray: Array
     },
     methods: {

@@ -55,7 +55,7 @@ export default {
                 <v-card-text>
                     <v-container grid-list-md>
                         <v-layout wrap>
-                            <v-flex xs12 sm6>
+                            <v-flex xs12 sm12>
                                 <v-select
                                     :items = "this.gameArray"
                                     label = "Game"
@@ -69,13 +69,23 @@ export default {
                                     v-model="session.date"
                                     required>
                                 </v-text-field>
-                                <div v-for = "player in session.players" v-bind:key="player.id">
+                            </v-flex>
+                        </v-layout>
+                        <v-layout row wrap>
+                            <v-flex v-for = "player in session.players" v-bind:key="player.id" xs12 sm12>
+                                <v-row>
                                     <v-text-field
                                         label = "name"
                                         v-model="player.name"
                                         required>
                                     </v-text-field>
-                                </div>
+                                    <v-spacer></v-spacer>
+                                    <v-text-field
+                                        label = "score"
+                                        v-model="player.score"
+                                        required>
+                                    </v-text-field>
+                                </v-row>
                             </v-flex>
                         </v-layout>
                     </v-container>

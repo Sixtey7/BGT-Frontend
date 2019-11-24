@@ -22,8 +22,7 @@ export default {
         clearValues() {
             this.session.game = '';
             this.session.date = '';
-            this.session.player1 = '';
-            this.session.player2 = '';
+            this.session.players = new Array();
         }
     },
     watch: {
@@ -32,9 +31,14 @@ export default {
                 //we'll want to set the vlaues of the model if they were provided
                 if (this.sessionToEdit) {
                     this.session = JSON.parse(JSON.stringify(this.sessionToEdit));
+                    this.session.players = new Array();
+                    this.session.players.push({'id': '11111', 'name': 'player1'});
+                    this.session.players.push({'id': '22222', 'name': 'player2'});
                 }
                 else {
                     this.clearValues();
+                    this.session.players.push({'id': '11111', 'name': 'player1'});
+                    this.session.players.push({'id': '22222', 'name': 'player2'});
                 }
             }
         }
@@ -65,16 +69,13 @@ export default {
                                     v-model="session.date"
                                     required>
                                 </v-text-field>
-                                <v-text-field
-                                    label = "Player 1"
-                                    v-model="session.player1"
-                                    required>
-                                </v-text-field>
-                                <v-text-field
-                                    label = "Player 2"
-                                    v-model="session.player2"
-                                    required>
-                                </v-text-field>
+                                <div v-for = "player in session.players" v-bind:key="player.id">
+                                    <v-text-field
+                                        label = "name"
+                                        v-model="player.name"
+                                        required>
+                                    </v-text-field>
+                                </div>
                             </v-flex>
                         </v-layout>
                     </v-container>

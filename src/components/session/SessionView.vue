@@ -16,6 +16,7 @@
             :show = "isModalVisible"
             :sessionToEdit = "sessionToShow"
             :gameArray = "gameArray"
+            :playerArray = "playerArray"
             @close = "closeModal"
             @save = "saveSession"
         />

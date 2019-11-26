@@ -3,7 +3,8 @@ export default {
     name: 'SessionModal',
     props: ['show', 
         'sessionToEdit',
-        'gameArray'],
+        'gameArray',
+        'playerArray'],
     data: function() {
         return {
             session: {}
@@ -74,11 +75,13 @@ export default {
                         <v-layout row wrap>
                             <v-flex v-for = "player in session.players" v-bind:key="player.id" xs12 sm12>
                                 <v-row>
-                                    <v-text-field
-                                        label = "name"
-                                        v-model="player.name"
-                                        required>
-                                    </v-text-field>
+                                    <v-select
+                                        :items = "playerArray"
+                                        label = "Player"
+                                        item-text = "name"
+                                        item-value = "name"
+                                        v-model = "player.name">
+                                    </v-select>
                                     <v-spacer></v-spacer>
                                     <v-text-field
                                         label = "score"

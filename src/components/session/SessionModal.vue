@@ -20,6 +20,11 @@ export default {
             this.$emit('save', JSON.parse(JSON.stringify(this.session)));
             this.clearValues();
         },
+        add() {
+            //TODO
+            // eslint-disable-next-line
+            console.log('add called!');
+        },
         clearValues() {
             this.session.game = '';
             this.session.date = '';
@@ -73,6 +78,11 @@ export default {
                             </v-flex>
                         </v-layout>
                         <v-layout row wrap>
+                            <div style="width: 100%">
+                                <v-btn color = "primary" dark @click="add()" style = "float: right;">Add Player
+                                    <v-icon dark right>add</v-icon>
+                                </v-btn>
+                            </div>
                             <v-flex v-for = "player in session.players" v-bind:key="player.id" xs12 sm12>
                                 <v-row>
                                     <v-select

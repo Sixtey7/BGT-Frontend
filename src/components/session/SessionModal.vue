@@ -7,8 +7,15 @@ export default {
         'playerArray'],
     data: function() {
         return {
-            session: {}
+            session: {},
+            currentPlayers: {}
         }
+    },
+    mounted: function(){
+        // TODO: need to remove this when sessions have players
+        this.session.players = new Array();
+        
+        this.currentPlayers = this.session.players;
     },
     methods: {
         close() {
@@ -24,6 +31,9 @@ export default {
             //TODO
             // eslint-disable-next-line
             console.log('add called!');
+            this.session.players.push({'id': '', 'name': ''});
+            this.currentPlayers.push({'id': '', 'name': ''});
+
         },
         clearValues() {
             this.session.game = '';
@@ -83,7 +93,7 @@ export default {
                                     <v-icon dark right>add</v-icon>
                                 </v-btn>
                             </div>
-                            <v-flex v-for = "player in session.players" v-bind:key="player.id" xs12 sm12>
+                            <v-flex v-for = "player in currentPlayers" v-bind:key="player.id" xs12 sm12>
                                 <v-row>
                                     <v-select
                                         :items = "playerArray"

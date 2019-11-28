@@ -14,7 +14,7 @@ export default {
     mounted: function(){
         // TODO: need to remove this when sessions have players
         this.session.players = new Array();
-        
+
         this.currentPlayers = this.session.players;
     },
     methods: {
@@ -28,9 +28,6 @@ export default {
             this.clearValues();
         },
         add() {
-            //TODO
-            // eslint-disable-next-line
-            console.log('add called!');
             this.session.players.push({'id': '', 'name': ''});
             this.currentPlayers.push({'id': '', 'name': ''});
 
@@ -47,14 +44,9 @@ export default {
                 //we'll want to set the vlaues of the model if they were provided
                 if (this.sessionToEdit) {
                     this.session = JSON.parse(JSON.stringify(this.sessionToEdit));
-                    this.session.players = new Array();
-                    this.session.players.push({'id': '11111', 'name': 'player1'});
-                    this.session.players.push({'id': '22222', 'name': 'player2'});
                 }
                 else {
                     this.clearValues();
-                    this.session.players.push({'id': '11111', 'name': 'player1'});
-                    this.session.players.push({'id': '22222', 'name': 'player2'});
                 }
             }
         }

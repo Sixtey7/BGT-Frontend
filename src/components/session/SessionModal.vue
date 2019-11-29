@@ -1,4 +1,6 @@
 <script>
+const uuidv4 = require('uuid/v4');
+
 export default {
     name: 'SessionModal',
     props: ['show', 
@@ -28,8 +30,9 @@ export default {
             this.clearValues();
         },
         add() {
-            this.session.players.push({'id': '', 'name': ''});
-            this.currentPlayers.push({'id': '', 'name': ''});
+            let uuid = uuidv4();
+            this.session.players.push({'id': uuid, 'name': ''});
+            this.currentPlayers.push({'id': uuid, 'name': ''});
 
         },
         clearValues() {

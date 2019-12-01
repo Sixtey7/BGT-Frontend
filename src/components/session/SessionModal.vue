@@ -29,7 +29,7 @@ export default {
             this.$emit('save', JSON.parse(JSON.stringify(this.session)));
             this.clearValues();
         },
-        add() {
+        addPlayer() {
             let uuid = uuidv4();
             this.session.players.push({'id': uuid, 'name': ''});
             this.currentPlayers.push({'id': uuid, 'name': ''});
@@ -84,7 +84,7 @@ export default {
                         </v-layout>
                         <v-layout row wrap>
                             <div style="width: 100%">
-                                <v-btn color = "primary" dark @click="add()" style = "float: right;">Add Player
+                                <v-btn color = "primary" dark @click="addPlayer()" style = "float: right;">Add Player
                                     <v-icon dark right>add</v-icon>
                                 </v-btn>
                             </div>

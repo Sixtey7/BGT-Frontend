@@ -30,15 +30,6 @@ class SessionModel {
         
     }
     async saveSession(sessionToSave) {
-        //TODO This is currently a hack because the ui shows player1 player2
-        sessionToSave.players = new Array();
-        if (typeof sessionToSave.player1 !== 'undefined') {
-            sessionToSave.players.push(sessionToSave.player1);
-        }
-        if (typeof sessionToSave.player2 !== 'undefined') {
-            sessionToSave.players.push(sessionToSave.player2);
-        }
-
         //determine if this is an existing session or a new one
         if (sessionToSave.id) {
             this._logger.debug('saving an edited session: ' + JSON.stringify(sessionToSave));

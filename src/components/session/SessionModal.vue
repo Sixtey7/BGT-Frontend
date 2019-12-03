@@ -31,8 +31,8 @@ export default {
         },
         addPlayer() {
             let uuid = uuidv4();
-            this.session.players.push({'id': uuid, 'name': ''});
-            this.currentPlayers.push({'id': uuid, 'name': ''});
+            this.session.players.push({'id': uuid, 'name': '', 'new': true});
+            this.currentPlayers.push({'id': uuid, 'name': '', 'new': true});
 
         },
         clearValues() {

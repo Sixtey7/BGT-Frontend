@@ -1,5 +1,6 @@
 <script>
 const uuidv4 = require('uuid/v4');
+import moment from 'moment';
 
 export default {
     name: 'SessionModal',
@@ -53,6 +54,14 @@ export default {
                 }
             }
         }
+    },
+    filters: {
+        formatDate: function(value) {
+            if (!value) {
+                return;
+            }
+            return moment.utc(value).format('MMM DD, YYYY');
+        }
     }
 }
 </script>
@@ -75,11 +84,11 @@ export default {
                                     v-model = "session.game_id"
                                     required>
                                 </v-select>
-                                <v-text-field
+                                <v-date-picker
                                     label = "Date"
                                     v-model="session.date"
                                     required>
-                                </v-text-field>
+                                </v-date-picker>
                             </v-flex>
                         </v-layout>
                         <v-layout row wrap>

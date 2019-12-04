@@ -27,6 +27,7 @@ export default {
         },
         save() {
             //deep copy the session prior to emitting it
+            this.session.players = this.currentPlayers;
             this.$emit('save', JSON.parse(JSON.stringify(this.session)));
             this.clearValues();
         },
@@ -108,7 +109,7 @@ export default {
                                     </v-select>
                                     <v-spacer></v-spacer>
                                     <v-text-field
-                                        label = "score"
+                                        label="score"
                                         v-model="player.score"
                                         required>
                                     </v-text-field>

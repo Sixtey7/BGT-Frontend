@@ -15,9 +15,10 @@ export default {
         }
     },
     mounted: function(){
-        // TODO: need to remove this when sessions have players
-        this.session.players = new Array();
-
+        //TODO: Need to remove this when all sessions have players
+        if (typeof this.session.players === 'undefined') {
+            this.session.players = new Array();
+        }
         this.currentPlayers = this.session.players;
     },
     methods: {
@@ -26,14 +27,13 @@ export default {
             this.$emit('close');
         },
         save() {
-            //deep copy the session prior to emitting it
             this.session.players = this.currentPlayers;
+            //deep copy the session prior to emitting it
             this.$emit('save', JSON.parse(JSON.stringify(this.session)));
             this.clearValues();
         },
         addPlayer() {
             let uuid = uuidv4();
-            this.session.players.push({'id': uuid, 'name': '', 'new': true});
             this.currentPlayers.push({'id': uuid, 'name': '', 'new': true});
 
         },

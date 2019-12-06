@@ -34,7 +34,7 @@ export default {
         },
         addPlayer() {
             let uuid = uuidv4();
-            this.currentPlayers.push({'id': uuid, 'name': '', 'new': true});
+            this.currentPlayers.push({'id': uuid, 'name': ''});
 
         },
         clearValues() {
